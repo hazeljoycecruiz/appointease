@@ -21,6 +21,8 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
+  <script src="js/appointment.js" defer></script>
+
 </head>
 
 <body id="top">
@@ -97,19 +99,19 @@
 			<hr>
 			</div>
             <h2 class="mb-2 title-color">Book an appoinment</h2>
-               <form id="#" class="appoinment-form" method="post" action="#">
+               <form id="appointment_form" class="appoinment-form">
                     <div class="row">
                          <div class="col-lg-6">
                             <div class="form-group">
 								<label for="appointmentDate">Appointment Date</label>
-                                <input name="appointment_date" id="date" type="date" class="form-control">
+                                <input name="appointment_date" id="date" type="date" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group">
 								<label for="appointmentTime">Appointment Time</label>
-                                <input name="appoinment_time" id="time" type="time" class="form-control" placeholder="Time">
+                                <input name="appoinment_time" id="setTime" type="time" class="form-control" placeholder="Time" required>
                             </div>
                         </div>
 
@@ -117,25 +119,25 @@
 					<div class="form-group-2 mb-4">
 						<div class="form-group">
 							<label for="symptoms">Symptoms</label>
-							<input name="symptoms" id="sympt" type="text" class="form-control" placeholder="Enter Symptoms">
+							<input name="symptoms" id="sympt" type="text" class="form-control" placeholder="Enter Symptoms" required>
 						</div>
 					</div>
 
                     <div class="form-group-2 mb-4">
 						<label for="comments">Comments</label>
-                        <textarea name="comments" id="message" class="form-control" rows="6" placeholder="Enter Comments"></textarea>
+                        <textarea name="comments" id="message" class="form-control" rows="6" placeholder="Enter Comments" required></textarea>
                     </div>
 					
 						<div class="form-group-2 mb-4">
 							<label for="comments">Book an appointment?</label>
-							<select class="form-control" id="exampleFormControlSelect1" name="status">
-							  <option>Yes</option>
-							  <option>No</option>
+							<select class="form-control" id="exampleFormControlSelect1" name="status" required>
+							  <option value="yes">Yes</option>
+							  <option value="no">No</option>
 							</select>
 						</div>
 					
 
-                    <a class="btn btn-main btn-round-full" href="confirmation.html">Make Appoinment<i class="icofont-simple-right ml-2"></i></a>
+                    <button class="btn btn-main btn-round-full">Make Appoinment<i class="icofont-simple-right ml-2"></i></button>
                 </form>
             </div>
         </div>
@@ -154,9 +156,9 @@
 					<p>SOCIAL MEDIA</p>
 
 					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.facebook.com/DocBlakeAng"><i class="icofont-facebook"></i></a></li>
 						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="https://ph.linkedin.com/in/blakewarrenmd"><i class="icofont-linkedin"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -171,15 +173,15 @@
 							<i class="icofont-email mr-3"></i>
 							<span class="h6 mb-0">Support Available for 24/7</span>
 						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
+						<h4 class="mt-2"><a href="tel:+23-345-67890">Support@DrAng.com</a></h4>
 					</div>
 
 					<div class="footer-contact-block">
 						<div class="icon d-flex align-items-center">
 							<i class="icofont-support mr-3"></i>
-							<span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
+							<span class="h6 mb-0">Mon to Fri : 08:00 - 04:00</span>
 						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
+						<h4 class="mt-2"><a href="tel:+23-345-67890">0961 076 5072</a></h4>
 					</div>
 				</div>
 			</div>
@@ -229,7 +231,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
     
     <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
 
   </body>
   </html>

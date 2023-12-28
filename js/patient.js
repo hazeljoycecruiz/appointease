@@ -18,7 +18,7 @@ reg_patient.onsubmit = async (e) => {
 
     //fetch API user patient endpoint
   const response = await fetch(
-    url + "/api/patient",
+    backendURL + "/api/patient",
     {
       method: "POST",
       headers: {

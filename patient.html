@@ -21,7 +21,7 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
-  <script src="js/patient.js" defer></script>
+  <script type="module"  src="js/auth/register.js" defer></script>
 
 </head>
 
@@ -31,7 +31,8 @@
     <div class="container-fluid h-custom" >
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 card mt-5 mb-3">
-          <form id="reg_patient">
+
+          <form id="form_register">
             <div class="mt-3">
                 <h2 class="text-center">Patient</h2>
             </div>
@@ -113,7 +114,7 @@
                 </div>
             </div>
             
-                <a href="index.html"><button type="submit" class="btn btn-primary btn-block mb-3">Register</button></a>
+                <button type="submit" class="btn btn-primary btn-block mb-3">Register</button>
                 <p>Already have an account? <a href="loginpatient.html" class="text-primary">Login</a></p>
             
                 
@@ -148,7 +149,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
     
     <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
 
   </body>
   </html>

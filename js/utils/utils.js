@@ -1,4 +1,6 @@
-const backendURL = "";
+import { setRouter } from "../router/router.js";
+
+const aebackendURL = "http://aebackend.test";
 
 // Notifications
 function successNotification(message, seconds = 0) {
@@ -31,7 +33,7 @@ getLoggedUser();
 
 async function getLoggedUser() {
     // Access User Profile API Endpoint
-    const response = await fetch(backendURL + "/api/organizer/show", {
+    const response = await fetch(aebackendURL + "/api/patient/show", {
       headers: {
         Accept: "application/json",
         "ngrok-skip-browser-warning": "69420",
@@ -58,4 +60,4 @@ async function getLoggedUser() {
     }
   }
 
-  export { getLoggedUser, backendURL, successNotification, errorNotification };
+  export { getLoggedUser, aebackendURL, successNotification, errorNotification };

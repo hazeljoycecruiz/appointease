@@ -1,16 +1,24 @@
 // Form Register
 
+const url = "http://aebackend.test"
+
 const reg_patient = document.getElementById("reg_patient");
 
 reg_patient.onsubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
+    console.log("ma click ba ni")
+   
+
+    //diable button
   document.querySelector("#reg_patient button").disabled = true;
 
+    //get values of form (input, text area, select) set it as form-data
   const formData = new FormData(reg_patient);
 
+    //fetch API user patient endpoint
   const response = await fetch(
-    "http://backend.test/api/message",
+    url + "/api/patient",
     {
       method: "POST",
       headers: {
@@ -20,16 +28,21 @@ reg_patient.onsubmit = async (e) => {
     }
   );
 
+    
+    //get response if 200-299 status code
   if (response.ok) {
     const json = await response.json();
       console.log(json);
+
+      //get response if 422 status code
       
     reg_patient.reset();
   } else if (response.status === 422) {
       const json = await response.json();
       
     alert(json.message);
-  }
-
+    }
+    
+    //enable button
   document.querySelector("#reg_patient button").disabled = false;
-};
+ };

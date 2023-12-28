@@ -1,43 +1,87 @@
-const url = "http://aebackend.test"
+import {
+  aebackendURL,
+  successNotification,
+  errorNotification,
+} from "../utils/utils.js";
 
-// Get all data
-getDatas();
+// Function to handle checkup form submission
+const handleCheckupFormSubmit = async (e) => {
+  e.preventDefault();
 
-async function getDatas() {
-    // Get API endpoint
-    const response = await fetch(backendURL + "/api/appointments/1", {
-        headers: {
-            Accept: "application/json",
-            "ngrok-skip-browser-warning": "69420",
-        },
+  // Get form elements
+  const checkupForm = document.getElementById("checkupForm");
+  const formData = new FormData(checkupForm);
+
+  try {
+    // Post data to the server
+    const response = await fetch(url + "/api/checkup", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: formData,
     });
 
     if (response.ok) {
-        const json = await response.json();
-
-        let container = "";
-
-        json.forEach((element) =>  {
-            const date = new Date(element.created_at).toLocaleString();
-
-            container += `
-                    <tbody>
-                    <tr>
-                    <td>${element.lastname},${element.firstname}</td>
-                    <td>${element.appointment_date}</td>
-                    <td>${element.appoinment_time}</td>
-                    <td>${element.symptoms}</td>
-                    <td>${element.comments}</td>
-                    <td>${element.status}</td>
-                    <td><button class="btn btn-success" onclick="confirmAppointment(1)">Confirm</button></td>
-                    </tr>
-                    </tbody>`;
-        });
-        // Use innerHTML to replace the content of the container element
-        document.getElementById("getDatas").innerHTML = container;
+      const json = await response.json();
+      console.log(json);
+      // Handle success, if needed
+      checkupForm.reset();
     } else {
-        // Handle HTTP errors
-        errorNotification("HTTP-Error: " + response.status);
+      const errorData = await response.json();
+      console.error("Error:", errorData);
+      // Handle error, if needed
     }
-}
+  } catch (error) {
+    console.error("Error:", error);
+    // Handle unexpected errors, if needed
+  }
+};
 
+// Event listener for checkup form submission
+const checkupForm = document.getElementById("checkupForm");
+checkupForm.addEventListener("submit", handleCheckupFormSubmit);
+
+// Function to fetch checkup data from the server
+const fetchCheckupData = async () => {
+  try {
+    // Fetch data from the server
+    const response = await fetch(url + "/api/checkup");
+    if (response.ok) {
+      const data = await response.json();
+      // Populate the table with the fetched data
+      populateCheckupTable(data);
+    } else {
+      const errorData = await response.json();
+      console.error("Error:", errorData);
+      // Handle error, if needed
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    // Handle unexpected errors, if needed
+  }
+};
+
+// Function to populate the checkup table with data
+const populateCheckupTable = (data) => {
+  const tableBody = document.querySelector("#checkupTable tbody");
+  tableBody.innerHTML = ""; // Clear existing rows
+
+  data.forEach((checkup) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${checkup.checkupId}</td>
+      <td>${checkup.appointmentId}</td>
+      <td>${checkup.scheduleDate}</td>
+      <td>${checkup.medicationPrescribed}</td>
+      <td>${checkup.diagnose}</td>
+      <td>
+        <a href="referral.html"><button class="btn btn-primary">Refer</button></a>
+      </td>
+    `;
+    tableBody.appendChild(row);
+  });
+};
+
+// Fetch checkup data when the page loads
+document.addEventListener("DOMContentLoaded", fetchCheckupData);

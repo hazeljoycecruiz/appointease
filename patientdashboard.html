@@ -21,8 +21,6 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
-  <script src="js/utils/utils.js" type="module" defer></script>
-  <script src="js/appointment.js" type="module" defer></script>
   <script src="js/logout.js"></script>
 
 </head>
@@ -50,7 +48,7 @@
 				<div class="col-lg-3">
 					<div class="text-lg-right top-right-bar mt-2 mt-lg-0">
 						<li class="list-inline-item">
-							<a href="loginpatient.html" class="text-white">
+							<a href="logout.php" class="text-white">
 								<i class="icofont-logout mr-2"></i>Logout
 							</a>
 						</li>
@@ -64,108 +62,63 @@
 	
 
 
-<section class="page-title bg-1">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-          <span class="text-white">Book your</span>
-          <h1 class="text-capitalize mb-5 text-lg">Appoinment</h1>
 
-          <!-- <ul class="list-inline breadcumb-nav">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">Book your Seat</a></li>
-          </ul> -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="appoinment section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-			<div id="doctor-schedule">
-				<h1 class="title-color">Doctor's Schedule</h1>
-				<!-- Example: Display doctor schedules here -->
-				<div class="list-group">
-					<a href="#" class="list-group-item list-group-item-action">Mon - Tue, 8:00 AM - 4:00 PM</a>
-					<a href="#" class="list-group-item list-group-item-action">Thu - Fri, 9:00 AM - 4:00 PM</a>
-					<a href="#" class="list-group-item list-group-item-action">Sat, 10:00 AM - 5:00 PM</a>
-					<!-- Add more schedule items dynamically from the database -->
-				</div>
-			<hr>
-			</div>
-            <h2 class="mb-2 title-color">Book an appoinment</h2>
-			<form id="appointment_form" class="appointment-form">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="appointmentDate">Patient ID</label>
-							<input name="patient_id" id="patient_id" type="text" class="form-control"  required>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="appointmentDate">Staff ID</label>
-							<input name="staff_id" id="staff_id" type="text" class="form-control"  required>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="appointmentDate">Schedule ID</label>
-							<input name="schedule_id" id="schedule_id" type="text" class="form-control" required>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="appointmentDate">Appointment Date</label>
-							<input name="appointment_date" id="appointment_date" type="text" class="form-control" placeholder="YYYY-MM-DD" required>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label for="setTime">Appointment Time</label>
-							<input name="appointment_time" id="setTime" type="text" class="form-control" placeholder="HH:MM XM" required>
-						</div>
-					</div>
-				</div>					
+<!-- Slider Start -->
+<section class="banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-12 col-xl-7">
+				<div class="block">
+					<div class="divider mb-3"></div>
+					<span class="text-uppercase text-sm letter-spacing ">Dr. Blake Ang</span>
+					<h1 class="mb-3 mt-3">Butuan Adult and Lung Clinic</h1>
 					
+					<p class="mb-4 pr-5">Thank you for visiting our page. Here you can find basic information about health promotion and lung diseases.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="features">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="feature-block d-lg-flex">
+					<div class="feature-item mb-5 mb-lg-0">
+						<div class="feature-icon mb-4">
+							<i class="icofont-surgeon-alt"></i>
+						</div>
+						<h4 class="mb-3">Online Appoinment</h4>
+						<p class="mb-4">Welcome to Butuan Adult and Lung Clinic's Online Appointment! Schedule with ease for Dr. Ang's personalized care. Your well-being, our priority.</p>
+						<a href="appointment.html" class="btn btn-main btn-round-full">Make a appoinment</a>
+					</div>
 				
-			
-				<div class="form-group-2 mb-4">
-					<div class="form-group">
-						<label for="symptoms">Symptoms</label>
-						<input name="symptoms" id="sympt" type="text" class="form-control" placeholder="Enter Symptoms" required>
+					<div class="feature-item mb-5 mb-lg-0">
+						<div class="feature-icon mb-4">
+							<i class="icofont-ui-clock"></i>
+						</div>
+						<span>Doctor's schedule</span>
+						<h4 class="mb-3">Working Hours</h4>
+						<ul class="w-hours list-unstyled">
+		                    <li class="d-flex justify-content-between">Monday - Tuesday : <span>8:00 AM - 4:00 PM</span></li>
+		                    <li class="d-flex justify-content-between">Thursday - Friday : <span>9:00 AM - 4:00 PM</span></li>
+		                    <li class="d-flex justify-content-between">Saturday : <span>10:00 AM - 5:00 PM</span></li>
+		                </ul>
+					</div>
+				
+					<div class="feature-item mb-5 mb-lg-0">
+						<div class="feature-icon mb-4">
+							<i class="icofont-support"></i>
+						</div>
+						<span>Emegency Cases</span>
+						<h4 class="mb-3">0961 076 5072</h4>
+						<p>In times of urgent medical needs, we are here to provide unwavering support. Our dedicated emergency hotline, ensures that you can connect with us anytime, day or night.</p>
 					</div>
 				</div>
-			
-				<div class="form-group-2 mb-4">
-					<label for="comments">Comments</label>
-					<textarea name="comments" id="message" class="form-control" rows="6" placeholder="Enter Comments" required></textarea>
-				</div>
-			
-				<div class="form-group-2 mb-4">
-					<label for="bookAppointment">Book an appointment?</label>
-					<select class="form-control" id="exampleFormControlSelect1" name="status" required>
-						<option value="true">Yes</option>
-						<option value="false">No</option>
-					</select>
-				</div>
-					<button class="btn btn-main btn-round-full">Make Appointment<i class="icofont-simple-right ml-2"></i></button>
 			</div>
-			</form>			
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+		</div>
+	</div>
 </section>
-
 
 <!-- footer Start -->
 <footer class="footer section gray-bg">
@@ -226,6 +179,7 @@
 		</div>
 	</div>
 </footer>
+
    
 
     <!-- 
@@ -243,7 +197,12 @@
     <script src="plugins/slick-carousel/slick/slick.min.js"></script>
     <!-- Counterup -->
     <script src="plugins/counterup/jquery.waypoints.min.js"></script>
-     
+    
+    <script src="plugins/shuffle/shuffle.min.js"></script>
+    <script src="plugins/counterup/jquery.counterup.min.js"></script>
+    <!-- Google Map -->
+    <script src="plugins/google-map/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
     
     <script src="js/script.js"></script>
 

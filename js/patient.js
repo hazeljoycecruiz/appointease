@@ -1,6 +1,10 @@
-// Form Register
+import {
+  aebackendURL,
+  successNotification,
+  errorNotification,
+} from "../utils/utils.js";
 
-const url = "http://aebackend.test"
+// Form Register
 
 const reg_patient = document.getElementById("reg_patient");
 

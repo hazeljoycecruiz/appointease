@@ -39,7 +39,11 @@
 // };
 
 
-const url = "http://aebackend.test"
+import {
+    aebackendURL,
+    successNotification,
+    errorNotification,
+  } from "../utils/utils.js";
 
 // Get all data
 getDatas();

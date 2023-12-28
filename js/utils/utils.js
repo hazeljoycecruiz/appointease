@@ -1,6 +1,6 @@
 import { setRouter } from "../router/router.js";
 
-const aebackendURL = "http://aebackend.test";
+const aebackendURL = "https://c21c-210-1-105-175.ngrok-free.app/aebackend/public";
 
 // Notifications
 function successNotification(message, seconds = 0) {
@@ -29,35 +29,35 @@ function errorNotification(message, seconds = 0) {
   }
 }
 
-getLoggedUser();
+// getLoggedUser();
 
-async function getLoggedUser() {
-    // Access User Profile API Endpoint
-    const response = await fetch(aebackendURL + "/api/patient/show", {
-      headers: {
-        Accept: "application/json",
-        "ngrok-skip-browser-warning": "69420",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    });
+// async function getLoggedUser() {
+//     // Access User Profile API Endpoint
+//     const response = await fetch(aebackendURL + "/api/patient/show", {
+//       headers: {
+//         Accept: "application/json",
+//         "ngrok-skip-browser-warning": "69420",
+//         Authorization: "Bearer " + localStorage.getItem("token"),
+//       },
+//     });
   
-    // Get response if 200-299 status code
-    if (response.ok) {
-      const json = await response.json();
+//     // Get response if 200-299 status code
+//     if (response.ok) {
+//       const json = await response.json();
   
-      document.getElementById("user_logged").innerHTML =
-        json.email + " ";
+//       document.getElementById("user_logged").innerHTML =
+//         json.email + " ";
   
-      if (document.getElementById("organizer_id")) {
-        document.getElementById("organizer_id").value = json.id;
-      }
-    }
-    // Get response if 400 or 500 status code
-    else {
-      const json = await response.json();
+//       if (document.getElementById("organizer_id")) {
+//         document.getElementById("organizer_id").value = json.id;
+//       }
+//     }
+//     // Get response if 400 or 500 status code
+//     else {
+//       const json = await response.json();
   
-      errorNotification(json.message, 10);
-    }
-  }
+//       errorNotification(json.message, 10);
+//     }
+//   }
 
-  export { getLoggedUser, aebackendURL, successNotification, errorNotification };
+  export { aebackendURL, successNotification, errorNotification };

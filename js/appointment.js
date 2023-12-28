@@ -39,54 +39,66 @@
 
 // };
 
-const url = "http://aebackend.test"
+import { aebackendURL, successNotification } from "/js/utils/utils.js";
 
 const appointmentForm = document.getElementById("appointment_form");
 
-    appointmentForm.addEventListener("submit", async function (e) {
-      e.preventDefault();
+appointmentForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-      // Validate and format time_sel
-      const timeInput = appointmentForm.querySelector("#setTime");
-      const enteredTime = timeInput.value.trim();
 
-      // Use a regular expression to check if the entered time matches the format "H:i A"
-      const timeFormatRegex = /^\s*(0?[1-9]|1[0-2]):[0-5][0-9] ?(?:[AM][PM][am][pm])?\s*$/;
+    const timeInput = appointmentForm.querySelector("#setTime");
+    const enteredTime = timeInput.value.trim();
+    
+    // Client-side validation for appointment time
+    if (!enteredTime) {
+        alert("Appointment time is required.");
+        return;
+    }
+    
 
-      if (!timeFormatRegex.test(enteredTime)) {
+    //Use a regular expression to check if the entered time matches the format "H:i A"
+    const timeFormatRegex = /^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+
+    if (!timeFormatRegex.test(enteredTime)) {
         alert("Invalid time format. Please use the format H:i A (e.g., 12:30 PM).");
         return;
-      }
+    }
 
+    // Continue with the rest of the code for formatting and sending the request
+    const formData = new FormData(appointmentForm);
 
-      const formData = new FormData(appointmentForm);
-
-      try {
-        const response = await fetch(URL + "/api/appointment", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            // "ngrok-skip-browser-warning": "69420",
-          },
-          body: formData,
+    try {
+        const response = await fetch(aebackendURL + "/api/appointment", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "ngrok-skip-browser-warning": "69420",
+            },
+            body: formData,
         });
 
         if (response.ok) {
-          const json = await response.json();
-          console.log(json);
-          // Handle success, if needed
-          console.log('ma click');
-          appointmentForm.reset();
+            const json = await response.json();
+            console.log(json);
+            // Handle success, if needed
+            console.log('ma click');
+            appointmentForm.reset();
+            console.log('Successful Response:', json);
 
-          successNotification("Request successfully sent.", 5);
+            successNotification("Request successfully sent.", 5);
         } else {
-          const errorData = await response.json();
-          console.error("Error:", errorData);
-          console.log('ma click');
-          // Handle error, if needed
+            const errorData = await response.json();
+            console.error("Error:", errorData);
+
+            // Display validation errors to the user
+            const errorMessages = Object.values(errorData.errors).flat();
+            alert(`Validation Errors: ${errorMessages.join(", ")}`);
         }
-      } catch (error) {
+    } catch (error) {
         console.error("Error:", error);
         // Handle unexpected errors, if needed
-      }
-    });
+    }
+});
+
+

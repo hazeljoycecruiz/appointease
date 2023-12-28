@@ -51,12 +51,16 @@
                 </div>
             </div>
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="dob" class="form-label">Date of Birth:</label>
                 <input type="date" class="form-control" id="dob" name="date_of_birth" required>
+            </div> -->
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth:</label>
+                <input type="text" class="form-control" id="dob" name="date_of_birth" placeholder="YYYY-MM-DD" required>
             </div>
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label class="form-label">Gender:</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
@@ -70,18 +74,23 @@
                         Female
                     </label>
                 </div>
+            </div> -->
+
+            <div class="mb-3">
+                <label for="dob" class="form-label">Gender:</label>
+                <input type="text" class="form-control" id="gender" name="gender" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Marital Status:</label>
                 <select class="form-select" name="marital_status" required>
                     <option value="" disabled selected>Select Status</option>
-                    <option value="admin">Married</option>
-                    <option value="patient">Single</option>
-                    <option value="patient">Divorced</option>
-                    <option value="patient">Widowed</option>
+                    <option value="married">Married</option>
+                    <option value="single">Single</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
                 </select>
-            </div>
+            </div>            
 
             <div class="mb-3">
                 <label for="address" class="form-label">Address:</label>
@@ -96,7 +105,7 @@
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
                 <input type="text" class="form-control" id="email" name="email" required
-                    placeholder="@example.com">
+                    placeholder="sample@gmail.com">
             </div>
 
             <div class="mb-3">
@@ -142,11 +151,7 @@
     <!-- Counterup -->
     <script src="plugins/counterup/jquery.waypoints.min.js"></script>
     
-    <script src="plugins/shuffle/shuffle.min.js"></script>
-    <script src="plugins/counterup/jquery.counterup.min.js"></script>
-    <!-- Google Map -->
-    <script src="plugins/google-map/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
+    <script src="plugins/counterup/jquery.counterup.min.js"></script> 
     
     <script src="js/script.js"></script>
 

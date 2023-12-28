@@ -1,15 +1,20 @@
-const url = "http://aebackend.test"
+import {
+  aebackendURL,
+  successNotification,
+  errorNotification,
+} from "../utils/utils.js";
 
-const scheduleForm = document.getElementById("doctorScheduleForm");
-const scheduleTable = document.querySelector(".table tbody");
-
-scheduleForm.addEventListener("submit", async function (e) {
+// Function to handle doctor's schedule form submission
+const handleDoctorScheduleFormSubmit = async (e) => {
   e.preventDefault();
 
-  const formData = new FormData(scheduleForm);
+  // Get form elements
+  const doctorScheduleForm = document.getElementById("doctorScheduleForm");
+  const formData = new FormData(doctorScheduleForm);
 
   try {
-    const response = await fetch(url + "/api/sch", {
+    // Post data to the server
+    const response = await fetch(url + "/api/sched", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -21,23 +26,9 @@ scheduleForm.addEventListener("submit", async function (e) {
       const json = await response.json();
       console.log(json);
       // Handle success, if needed
-      scheduleForm.reset();
-
-      // Add the new schedule to the table dynamically
-      const newRow = document.createElement("tr");
-      newRow.innerHTML = `
-        <td>${json.scheduleId}</td>
-        <td>${formData.get("day_of_week")}</td>
-        <td>${formData.get("start_time")}</td>
-        <td>${formData.get("end_time")}</td>
-        <td>
-          <button class="btn btn-warning">Edit</button>
-          <button class="btn btn-danger">Delete</button>
-        </td>
-      `;
-      scheduleTable.appendChild(newRow);
-
-      successNotification("Schedule added successfully.", 5);
+      doctorScheduleForm.reset();
+      // Fetch and display updated schedule data
+      fetchDoctorScheduleData();
     } else {
       const errorData = await response.json();
       console.error("Error:", errorData);
@@ -47,4 +38,52 @@ scheduleForm.addEventListener("submit", async function (e) {
     console.error("Error:", error);
     // Handle unexpected errors, if needed
   }
-});
+};
+
+// Event listener for doctor's schedule form submission
+const doctorScheduleForm = document.getElementById("doctorScheduleForm");
+doctorScheduleForm.addEventListener("submit", handleDoctorScheduleFormSubmit);
+
+// Function to fetch doctor's schedule data from the server
+const fetchDoctorScheduleData = async () => {
+  try {
+    // Fetch data from the server
+    const response = await fetch(url + "/api/sched");
+    if (response.ok) {
+      const data = await response.json();
+      // Populate the table with the fetched data
+      populateDoctorScheduleTable(data);
+    } else {
+      const errorData = await response.json();
+      console.error("Error:", errorData);
+      // Handle error, if needed
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    // Handle unexpected errors, if needed
+  }
+};
+
+// Function to populate the doctor's schedule table with data
+const populateDoctorScheduleTable = (data) => {
+  const tableBody = document.querySelector("#doctorScheduleTable tbody");
+  tableBody.innerHTML = ""; // Clear existing rows
+
+  data.forEach((schedule) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${schedule.scheduleId}</td>
+      <td>${schedule.dayOfWeek}</td>
+      <td>${schedule.startTime}</td>
+      <td>${schedule.endTime}</td>
+      <td>
+        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    `;
+    tableBody.appendChild(row);
+  });
+};
+
+// Fetch doctor's schedule data when the page loads
+document.addEventListener("DOMContentLoaded", fetchDoctorScheduleData);

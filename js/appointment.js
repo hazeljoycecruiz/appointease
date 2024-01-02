@@ -55,7 +55,7 @@ appointmentForm.addEventListener("submit", async function (e) {
         alert("Appointment time is required.");
         return;
     }
-    
+
 
     //Use a regular expression to check if the entered time matches the format "H:i A"
     const timeFormatRegex = /^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;

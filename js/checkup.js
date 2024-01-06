@@ -14,7 +14,7 @@ const handleCheckupFormSubmit = async (e) => {
 
   try {
     // Post data to the server
-    const response = await fetch(url + "/api/checkup", {
+    const response = await fetch(aebackendURL + "/api/checkup", {
       method: "POST",
       headers: {
         Accept: "application/json",

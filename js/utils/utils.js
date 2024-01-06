@@ -1,6 +1,6 @@
 import { setRouter } from "../router/router.js";
 
-const aebackendURL = "https://c21c-210-1-105-175.ngrok-free.app/aebackend/public";
+const aebackendURL = "https://204b-119-111-132-67.ngrok-free.app/aebackend/public";
 
 // Notifications
 function successNotification(message, seconds = 0) {
